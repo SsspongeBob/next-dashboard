@@ -1,37 +1,26 @@
-'use client'
+import React, { useEffect, useState } from 'react'
+import { useFormState } from 'react-dom'
+import { test } from '../lib/actions'
+import { auth, signOut } from '@/auth'
+import { redirect } from 'next/navigation'
 
-import { MagnifyingGlassIcon } from '@heroicons/react/24/outline'
-import {
-  Blockquote,
-  Box, Button,
-  Card, Checkbox,
-  CheckboxCards,
-  CheckboxGroup,
-  Container,
-  ContextMenu,
-  Flex,
-  Grid,
-  HoverCard,
-  IconButton,
-  Inset,
-  Reset,
-  Strong,
-  Text
-} from '@radix-ui/themes'
-import React from 'react'
+const Page = async () => {
+  const res = await auth()
 
-const Page = () => {
   return (
     <>
-      {/* <Reset> */}
-      <code color='red'>
-        {JSON.stringify({
-          hello: "World"
-        })}
-      </code>
-      {/* </Reset> */}
+      <div>{res?.user?.email || ""}</div>
+      <form action={async () => {
+        'use server'
+
+        await signOut({ redirectTo: "/" })
+      }}>
+        <button>sign out</button>
+      </form>
     </>
   )
 }
 
 export default Page
+
+export const dynamic = 'force-dynamic'
