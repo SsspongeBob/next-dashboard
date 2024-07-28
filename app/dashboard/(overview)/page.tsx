@@ -11,6 +11,11 @@ import { Suspense } from 'react';
 // import {
 //   fetchCardData,
 // } from '@/app/lib/data';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Home Page',
+};
 
 export default async function Page() {
 

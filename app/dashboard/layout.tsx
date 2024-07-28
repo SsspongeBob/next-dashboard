@@ -1,10 +1,4 @@
 import SideNav from '@/app/ui/dashboard/sidenav';
-import type { Metadata } from 'next';
-
-export const metadata: Metadata = {
-  title: "NextJs Dashboard",
-  description: "Just for learning nextjs"
-}
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
